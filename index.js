@@ -40,7 +40,11 @@ client.on('message', async msg => {
     } catch (e) {
       console.error(e);
       if (e.message === '404 Not Found') {
-        msg.channel.send(new RichEmbed().setColor(0xF05958).setDescription('**UF não encontrada.** Verifique se você digitou corretamente.'));
+        msg.channel.send(
+          new RichEmbed()
+            .setColor(0x7289da)
+            .setDescription('**UF não encontrada.** Verifique se você digitou corretamente.')
+        );
       } else {
         msg.channel.send(new RichEmbed().setColor(0xF05958).setDescription([
           '**Um erro ocorreu.** [Clique aqui para reportar ao desenvolvedor.](https://github.com/pedrofracassi/apuracao-bot/issues/new)',
