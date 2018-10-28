@@ -9,6 +9,7 @@ client.on('ready', () => {
 
 client.on('message', async msg => {
   if (msg.content.startsWith(`<@${client.user.id}>`)) {
+    console.log(`"${msg.content}" executado por "${msg.author.tag}" (${msg.author.id}) no servidor "${msg.guild.name}" (${msg.guild.id})`)
     msg.channel.startTyping()
     const where = msg.content.split(' ')[1] || 'br'
     try {
@@ -22,7 +23,8 @@ client.on('message', async msg => {
           `**${body.abrangencia.votos.nulos.quantidade}** (${body.abrangencia.votos.nulos.porcentagem}%) votos nulos`,
           `**${body.abrangencia.votos.abstencao.quantidade}** (${body.abrangencia.votos.abstencao.porcentagem}%) abstenções`,
           ``,
-          `${process.env.BOT_TAG_EMOJI} [Adicione o **Apuração Bot** ao seu servidor](https://discordapp.com/oauth2/authorize?client_id=506142008415485963&scope=bot)`
+          ` ${process.env.BOT_TAG_EMOJI} [Adicione o **Apuração Bot** ao seu servidor](https://discordapp.com/oauth2/authorize?client_id=506142008415485963&scope=bot)`,
+          ` ${process.env.GITHUB_EMOJI} [Veja o código-fonte no GitHub](https://github.com/pedrofracassi/apuracao-bot)`
         ].join('\n'))
         .setColor(0x7289da)
       await msg.channel.send(info)
