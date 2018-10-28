@@ -13,7 +13,7 @@ client.on('message', async msg => {
     msg.channel.startTyping()
     const where = msg.content.split(' ')[1] || 'br'
     try {
-      const { body } = await snekfetch.get(`https://s.glbimg.com/jo/el/2018/apuracao/2-turno/${where}/executivo.json`)
+      const { body } = await snekfetch.get(`https://s.glbimg.com/jo/el/2018/apuracao/2-turno/${where.toLowerCase()}/executivo.json`)
 
       const info = new RichEmbed()
         .setTitle(`${body.abrangencia.nome} (${body.abrangencia.andamento}%)`)
@@ -38,8 +38,11 @@ client.on('message', async msg => {
 
     } catch (e) {
       if (e.message === '404 Not Found') {
-        msg.channel.send(new RichEmbed().setColor(0xF05958).setDescription('**UF não encontrada.** Verifique se você digitou corretamente.'))
-        console.log(e)
+        msg.channel.send(
+          new RichEmbed()
+            .setColor(0x7289da)
+            .setDescription('**UF não encontrada.** Verifique se você digitou corretamente.')
+        )
       } else {
         msg.channel.send(new RichEmbed().setColor(0xF05958).setDescription([
           '**Um erro ocorreu.** [Clique aqui para reportar ao desenvolvedor.](https://github.com/pedrofracassi/apuracao-bot/issues/new)',
