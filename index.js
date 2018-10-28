@@ -38,10 +38,7 @@ client.on('message', async msg => {
 
     } catch (e) {
       if (e.message === '404 Not Found') {
-        msg.channel.send(new RichEmbed().setColor(0xF05958).setDescription([
-          '**UF não encontrada.** Verifique se você digitou corretamente.',
-          '\`' + e.message +'\`'
-        ].join('\n')))
+        msg.channel.send(new RichEmbed().setColor(0xF05958).setDescription('**UF não encontrada.** Verifique se você digitou corretamente.'))
         console.log(e)
       } else {
         msg.channel.send(new RichEmbed().setColor(0xF05958).setDescription([
