@@ -9,9 +9,9 @@ client.on('ready', () => {
 
 client.on('message', async msg => {
   if (msg.content.startsWith(`<@${client.user.id}>`)) {
-    console.log(`"${msg.content}" executado por "${msg.author.tag}" (${msg.author.id}) no servidor "${msg.guild.name}" (${msg.guild.id})`)
-    msg.channel.startTyping()
-    const where = msg.content.split(' ')[1] || 'br'
+    console.log(`"${msg.content}" executado por "${msg.author.tag}" (${msg.author.id}) no servidor "${msg.guild.name}" (${msg.guild.id})`);
+    msg.channel.startTyping();
+    const where = msg.content.split(' ')[1] || 'br';
     try {
       const { body } = await snekfetch.get(`https://s.glbimg.com/jo/el/2018/apuracao/2-turno/${where.toLowerCase()}/executivo.json`);
 
@@ -52,4 +52,4 @@ client.on('message', async msg => {
   }
 })
 
-client.login(process.env.DISCORD_TOKEN)
+client.login(process.env.DISCORD_TOKEN);
